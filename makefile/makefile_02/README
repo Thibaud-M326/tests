@@ -1,0 +1,60 @@
+Voici les commandes pour chaque étape de la compilation d'un programme C en utilisant cc (ou gcc) :
+
+1. Prétraitement
+
+Pour effectuer uniquement le prétraitement et obtenir un fichier de sortie au format .i :
+
+cc -E fichier.c -o fichier.i
+
+2. Compilation
+
+Pour compiler le fichier .c en un fichier assembleur .s :
+
+cc -S fichier.c -o fichier.s
+
+3. Assemblage
+
+Pour assembler le fichier assembleur .s en un fichier objet .o :
+
+cc -c fichier.s -o fichier.o
+
+4. Édition des liens
+
+Pour lier le fichier objet .o et créer l'exécutable :
+
+cc fichier.o -o executable
+
+Étape complète
+
+Si tu veux tout faire en une seule commande (ce qui est généralement le plus courant), tu peux simplement exécuter :
+
+cc fichier.c -o executable
+
+Exemple complet
+
+Voici un exemple complet avec un fichier source nommé mon_programme.c :
+
+1. Prétraitement :
+
+cc -E mon_programme.c -o mon_programme.i
+
+
+2. Compilation :
+
+cc -S mon_programme.c -o mon_programme.s
+
+
+3. Assemblage :
+
+cc -c mon_programme.s -o mon_programme.o
+
+
+4. Édition des liens :
+
+cc mon_programme.o -o mon_programme
+
+
+
+Ces commandes te permettent de réaliser chaque étape de la compilation manuellement.
+
+
