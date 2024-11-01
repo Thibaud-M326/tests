@@ -3,16 +3,17 @@ NAME 		:= icecream
 SRC_DIR		:= src
 OBJ_DIR		:= obj
 SRCS		:= \
+	main.c		\
 	arom/coco.c	\
 	base/milk.c	\
 	base/water.c
-SRCS        := $(SRCS:%=$(SRC_DIR)/%)
-OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+SRCS        	:= $(SRCS:%=$(SRC_DIR)/%)
+OBJS        	:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CC 		:= cc
 CFLAGS 		:= -Wall -Wextra -Werror
 
-RM		:= rm -f
+RM		:= rm -rf
 MAKEFLAGS	+= --no-print-directory
 DIR_DUP		= mkdir -p $(@D)
 
@@ -24,12 +25,11 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
-	echo "created $(@D)"
 	$(CC) $(CFLAGS) -c -o $@ $<
 	$(info CREATED $@ WITH $<)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
@@ -39,5 +39,5 @@ re:
 	$(MAKE) all
 
 .PHONY: clean fclean re
+.SUFFIXES:
 # .SILENT:   #we can also silence a particular rule by prefixing it with @
-# .SUFFIXES:
